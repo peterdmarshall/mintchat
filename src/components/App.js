@@ -35,7 +35,8 @@ function App() {
         JSON.stringify({
           email: email,
           username: username,
-          message: msgText
+          message: msgText,
+          timestamp: new Date()
         })
       )
     }
