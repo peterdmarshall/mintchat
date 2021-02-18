@@ -22,7 +22,7 @@ export default function Message(props) {
                 <h2 className="p-2 pb-0 ml-2">
                     {msg.username}
                 </h2>
-                <h2 className="bg-green-200 rounded-lg p-2 mb-2 mr-2 ml-2 w-4/5">
+                <h2 className="bg-green-200 rounded-lg p-2 mb-2 mr-2 ml-2 w-4/5 break-words">
                     {msg.message}
                 </h2>
             </div>

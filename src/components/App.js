@@ -6,6 +6,7 @@ function App() {
   const webSocket = useRef(null);
   const [joined, setJoined] = useState(false);
   const [messageList, setMessageList] = useState([]);
+  var messageListEnd = useRef(null);
 
   // State for message
   const [msgText, setMsgText] = useState("");
@@ -21,6 +22,7 @@ function App() {
       let parsedMessage = JSON.parse(message.data);
       setMessageList(messageList => [...messageList, parsedMessage]);
       console.log(message);
+      scrollToBottom();
     };
     return () => webSocket.current.close(); 
   }, []);
@@ -76,6 +78,10 @@ function App() {
     setMsgText(updatedText);
   }
 
+  const scrollToBottom = () => {
+    messageListEnd.current.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className="w-screen h-screen bg-green-200 flex flex-col bg-white items-center justify-center">
       { !joined &&
@@ -110,12 +116,16 @@ function App() {
         <h1 className="text-4xl font-bold text-green-200 m-2 p-2">
           mintChat
         </h1>
-        <div className="flex flex-col items-center justify-center w-full h-full">
-          <div className="w-5/6 h-5/6 m-2 p-2 border-2 border-green-200 rounded-lg">
+        <div className="flex flex-col items-center justify-center w-full h-5/6">
+          <div className="w-5/6 h-5/6 m-2 p-2 border-2 border-green-200 rounded-lg overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             { messageList && messageList.map((msg) => (
               <Message user={username} msg={msg} />
             ))
             }
+            <div 
+              className="opacity-0"
+              ref={(el) => { messageListEnd.current = el; }}>
+            </div>
           </div>
           <form 
             className="flex flex-row items-center justify-center w-5/6 m-2 p-2"
