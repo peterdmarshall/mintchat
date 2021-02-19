@@ -13,7 +13,7 @@ export default function Message(props) {
                 <h2 className="p-2 pb-0 ml-2 font-bold">
                     {msg.username}
                 </h2>
-                <h2 className="bg-green-200 rounded-lg p-2 mb-2 mr-2 ml-2 w-4/5">
+                <h2 className="bg-green-200 rounded-lg p-2 mb-2 mr-2 ml-2 max-w-2xl">
                     {msg.message}
                 </h2>
                 <h2 className="p-2 pt-0 ml-2 text-sm">
@@ -26,7 +26,7 @@ export default function Message(props) {
                 <h2 className="p-2 pb-0 mr-2 font-bold">
                     {msg.username}
                 </h2>
-                <h2 className="bg-green-200 rounded-lg p-2 mb-2 mr-2 ml-2 w-4/5 break-words">
+                <h2 className="bg-green-200 rounded-lg p-3 mb-1 mr-2 ml-2 max-w-2xl break-words">
                     {msg.message}
                 </h2>
                 <h2 className="p-2 pt-0 mr-2 text-sm">
