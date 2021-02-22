@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     console.log('Joining chat');
-    webSocket.current = new WebSocket('ws://' + process.env.REACT_APP_API_DOMAIN + '/ws');
+    webSocket.current = new WebSocket('wss://' + process.env.REACT_APP_API_DOMAIN + '/ws');
     webSocket.current.onmessage = (message) => {
       let parsedMessage = JSON.parse(message.data);
       setMessageList(messageList => [...messageList, parsedMessage]);
